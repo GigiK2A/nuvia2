@@ -1,16 +1,22 @@
-FROM node:20-alpine as base
+FROM node:20-alpine
 
+# Imposta la directory di lavoro
 WORKDIR /usr/src/app
 
-# Copia definizioni dipendenze e installa
+# Copia il manifest delle dipendenze
 COPY package.json package-lock.json* ./
+
+# Installa tutte le dipendenze (incluse quelle di sviluppo per la build)
 RUN npm install && npm cache clean --force
 
-# Copia tutto il codice
+# Copia il resto del codice sorgente
 COPY . .
 
-# Espone la porta di sviluppo Vite
-EXPOSE 3000
+# Esegue il build per produrre il bundle del server e del client
+RUN npm run build
 
-# Per semplicità di sviluppo avviamo il server Vite
-CMD ["npm", "run", "dev"]
+# Espone la porta su cui il server ascolta
+EXPOSE 5000
+
+# Comando di avvio in produzione
+CMD ["npm", "run", "start"]

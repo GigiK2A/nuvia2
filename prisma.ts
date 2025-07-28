@@ -1,9 +1,23 @@
 import { PrismaClient } from '@prisma/client';
 
-const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClient | undefined;
-};
+const prisma = new PrismaClient();
 
-export const prisma = globalForPrisma.prisma ?? new PrismaClient();
+export default prisma;
 
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
+// Initialize Prisma connection
+export async function initializePrisma() {
+  try {
+    await prisma.$connect();
+    console.log('✅ Prisma connected to PostgreSQL database');
+    return true;
+  } catch (error) {
+    console.error('❌ Failed to connect to database:', error);
+    return false;
+  }
+}
+
+// Graceful shutdown
+export async function disconnectPrisma() {
+  await prisma.$disconnect();
+  console.log('🔌 Prisma disconnected from database');
+}

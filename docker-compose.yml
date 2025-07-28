@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # Database PostgreSQL
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: nuvia_db
+      POSTGRES_USER: nuvia_user
+      POSTGRES_PASSWORD: password
+      TZ: Europe/Rome
+    volumes:
+      - nuvia_db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  # Backend Node.js/Express
+  backend:
+    build: ./backend
+    depends_on:
+      - db
+    env_file:
+      - ./backend/.env
+    ports:
+      - "3001:3001"
+    restart: unless-stopped
+
+  # Frontend React (Vite)
+  frontend:
+    build: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  # Applicazione completa (server + client in un unico container) estratta da Replit
+  fullapp:
+    build: ./full-app
+    depends_on:
+      - db
+    env_file:
+      - ./full-app/.env.export
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+
+volumes:
+  nuvia_db_data:
+    driver: local
