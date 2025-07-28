@@ -1,0 +1,65 @@
+// File: prisma/schema.prisma
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id        String   @id @default(cuid())
+  name      String
+  type      String   // "chat" | "document" | "code"
+  createdAt DateTime @default(now())
+  userId    String?
+
+  chats     ChatMessage[]
+  documents Document[]
+  codes     CodeSnippet[]
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  role      String   // "user" | "ai"
+  content   String
+  createdAt DateTime @default(now())
+
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id])
+}
+
+model Document {
+  id        String   @id @default(cuid())
+  content   String
+  format    String   // "pdf" | "word"
+  createdAt DateTime @default(now())
+
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id])
+}
+
+model CodeSnippet {
+  id        String   @id @default(cuid())
+  filename  String
+  code      String
+  language  String
+  createdAt DateTime @default(now())
+
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id])
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  date        DateTime
+  time        String?
+  reminder    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  userId      String?
+}

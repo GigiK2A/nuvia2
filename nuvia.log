@@ -1,0 +1,46 @@
+[2025-05-21 17:11] User: 1
+Prompt: aggiungi riunione test domani alle 10
+Risposta: ✅ Evento "riunione test" salvato a 2025-05-22T08:00:00.000Z (per 2025-05-22 alle 10:00)
+Dettagli: Evento creato - data: 2025-05-22, ora: 10:00
+
+[2025-05-21 17:11] User: 1
+Prompt: ciao Nuvia, come stai?
+Risposta: Non ho capito la richiesta. Prova con: 'aggiungi riunione domani alle 15:30'
+
+[2025-05-23 09:42] User: 1
+Prompt: Che impegni ho oggi
+Risposta: Non ho capito la richiesta. Prova con: 'aggiungi riunione domani alle 15:30'
+
+[2025-05-23 09:42] User: 1
+Prompt: Che impegni ho oggi?
+Risposta: Non ho capito la richiesta. Prova con: 'aggiungi riunione domani alle 15:30'
+
+[2025-05-23 14:20] User: 1
+Prompt: che impegni ho oggi?
+Risposta: Non ho capito la richiesta. Prova con: 'aggiungi riunione domani alle 15:30'
+
+[2025-06-03 11:45] User: 2
+Prompt: CIAO
+Risposta: Non ho capito la richiesta. Prova con: 'aggiungi riunione domani alle 15:30'
+
+[2025-06-03 12:24] User: 2
+Prompt: ciao
+Risposta: Non ho capito la richiesta. Prova con: 'aggiungi riunione domani alle 15:30'
+
+[2025-06-03 13:13] User: 2
+Prompt: ciao
+Risposta: Non ho capito la richiesta. Prova con: 'aggiungi riunione domani alle 15:30'
+
+[2025-06-03 14:09] User: 2
+Prompt: CREA UNA RIUNIONE PER DOMANI ALLE 15:00
+Risposta: Non ho capito la richiesta. Prova con: 'aggiungi riunione domani alle 15:30'
+
+[2025-06-03 14:09] User: 2
+Prompt: aggiungi riunione domani alle 15:30
+Risposta: ✅ Evento "riunione" salvato a 2025-06-04T13:30:00.000Z (per 2025-06-04 alle 15:30)
+Dettagli: Evento creato - data: 2025-06-04, ora: 15:30
+
+[2025-06-03 14:09] User: 2
+Prompt: CHE RIUNIONI CI SONO DOMANI?
+Risposta: Non ho capito la richiesta. Prova con: 'aggiungi riunione domani alle 15:30'
+

@@ -1,0 +1,187 @@
+{
+  "common": {
+    "welcome": "Welcome to your AI assistant",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "navigation": {
+    "chat": "AI Chat",
+    "documents": "Generate Document",
+    "code": "Generate Code",
+    "calendar": "Smart Calendar",
+    "assistant": "Nuvia",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "loginTitle": "Sign in to your account",
+    "registerTitle": "Create a new account",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?"
+  },
+  "chat": {
+    "title": "Chat with AI Assistant",
+    "placeholder": "Type your message...",
+    "send": "Send",
+    "newChat": "New conversation",
+    "chatHistory": "Chat history",
+    "typing": "AI is typing...",
+    "selectTone": "Select AI tone",
+    "tones": {
+      "professionale": "Professional",
+      "amichevole": "Friendly",
+      "tecnico": "Technical",
+      "creativo": "Creative",
+      "formale": "Formal",
+      "diretto": "Direct",
+      "empatico": "Empathetic"
+    }
+  },
+  "documents": {
+    "title": "Document Generator",
+    "generate": "Generate Document",
+    "prompt": "Describe the document you want to generate...",
+    "downloadPdf": "Download PDF",
+    "downloadWord": "Download Word",
+    "preview": "Preview",
+    "uploadFile": "Upload File",
+    "analyzeDocument": "Analyze Document",
+    "supportedFormats": "Supported formats: PDF, DOCX, TXT"
+  },
+  "code": {
+    "title": "Code Generator",
+    "generate": "Generate Code",
+    "prompt": "Describe the project you want to create...",
+    "preview": "Preview",
+    "download": "Download",
+    "deploy": "Deploy",
+    "downloadZip": "Download ZIP",
+    "deployToVercel": "Deploy to Vercel",
+    "projectName": "Project Name",
+    "projectType": "Project Type",
+    "files": "Files",
+    "templates": "Templates",
+    "saveTemplate": "Save as Template",
+    "loadTemplate": "Load Template",
+    "inlineEdit": "Inline Edit",
+    "autoComplete": "Auto Complete",
+    "generateDatabase": "Generate Database",
+    "generateApi": "Generate API CRUD"
+  },
+  "calendar": {
+    "title": "Smart Calendar",
+    "addEvent": "Add Event",
+    "editEvent": "Edit Event",
+    "deleteEvent": "Delete Event",
+    "eventTitle": "Event Title",
+    "eventDescription": "Description",
+    "eventDate": "Date",
+    "eventTime": "Time",
+    "eventLocation": "Location",
+    "allDay": "All day",
+    "reminder": "Reminder",
+    "noEvents": "No events for today",
+    "upcomingEvents": "Upcoming events"
+  },
+  "assistant": {
+    "title": "Nuvia - Personal Assistant",
+    "placeholder": "Ask Nuvia anything...",
+    "greeting": "Hi! I'm Nuvia, your personal assistant. How can I help you today?",
+    "searching": "Searching for information...",
+    "webSearch": "Web search in progress...",
+    "uploadFile": "Upload a file for analysis"
+  },
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "preferences": "Preferences",
+    "language": "Language",
+    "aiStyle": "AI Style",
+    "name": "Name",
+    "surname": "Surname",
+    "saveChanges": "Save Changes",
+    "changesSaved": "Changes saved successfully",
+    "userManagement": "User Management",
+    "addUser": "Add User",
+    "users": "Users",
+    "role": "Role",
+    "admin": "Admin",
+    "user": "User"
+  },
+  "projects": {
+    "title": "Your Projects",
+    "create": "Create Project",
+    "view": "View",
+    "edit": "Edit",
+    "delete": "Delete",
+    "noProjects": "No projects created yet",
+    "createdAt": "Created on",
+    "lastModified": "Last modified"
+  },
+  "templates": {
+    "title": "Personal Templates",
+    "save": "Save Template",
+    "load": "Load Template",
+    "delete": "Delete Template",
+    "name": "Template Name",
+    "description": "Description",
+    "noTemplates": "No templates saved yet",
+    "templateSaved": "Template saved successfully",
+    "templateLoaded": "Template loaded successfully"
+  },
+  "database": {
+    "generateSchema": "Generate Database Schema",
+    "description": "Project description...",
+    "sqlSchema": "SQL Schema",
+    "typescriptModel": "TypeScript Model",
+    "generate": "Generate Schema"
+  },
+  "api": {
+    "generateCrud": "Generate API CRUD",
+    "entityName": "Entity Name",
+    "controller": "Controller",
+    "routes": "Routes",
+    "model": "Model",
+    "generate": "Generate API"
+  },
+  "languages": {
+    "it": "🇮🇹 Italiano",
+    "en": "🇬🇧 English"
+  },
+  "errors": {
+    "generic": "An error occurred",
+    "network": "Connection error",
+    "unauthorized": "Unauthorized",
+    "notFound": "Not found",
+    "validation": "Validation error",
+    "fileUpload": "File upload error",
+    "fileTooLarge": "File too large",
+    "invalidFormat": "Invalid format"
+  },
+  "success": {
+    "saved": "Saved successfully",
+    "deleted": "Deleted successfully",
+    "updated": "Updated successfully",
+    "created": "Created successfully",
+    "deployed": "Deploy completed successfully",
+    "downloaded": "Download completed"
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "common": {
+    "welcome": "Benvenuto nel tuo assistente AI",
+    "loading": "Caricamento...",
+    "error": "Errore",
+    "success": "Successo",
+    "cancel": "Annulla",
+    "save": "Salva",
+    "delete": "Elimina",
+    "edit": "Modifica",
+    "create": "Crea",
+    "close": "Chiudi",
+    "back": "Indietro",
+    "next": "Avanti",
+    "previous": "Precedente",
+    "confirm": "Conferma",
+    "yes": "Sì",
+    "no": "No"
+  },
+  "navigation": {
+    "chat": "Chat Agente",
+    "documents": "Genera Documento",
+    "code": "Genera Codice",
+    "calendar": "Calendario Intelligente",
+    "assistant": "Nuvia",
+    "settings": "Impostazioni",
+    "logout": "Esci"
+  },
+  "auth": {
+    "login": "Accedi",
+    "register": "Registrati",
+    "email": "Email",
+    "password": "Password",
+    "loginTitle": "Accedi al tuo account",
+    "registerTitle": "Crea un nuovo account",
+    "forgotPassword": "Password dimenticata?",
+    "noAccount": "Non hai un account?",
+    "hasAccount": "Hai già un account?"
+  },
+  "chat": {
+    "title": "Chat con l'Assistente AI",
+    "placeholder": "Scrivi il tuo messaggio...",
+    "send": "Invia",
+    "newChat": "Nuova conversazione",
+    "chatHistory": "Cronologia conversazioni",
+    "typing": "L'AI sta scrivendo...",
+    "selectTone": "Seleziona tono AI",
+    "tones": {
+      "professionale": "Professionale",
+      "amichevole": "Amichevole",
+      "tecnico": "Tecnico",
+      "creativo": "Creativo",
+      "formale": "Formale",
+      "diretto": "Diretto",
+      "empatico": "Empatico"
+    }
+  },
+  "documents": {
+    "title": "Generatore Documenti",
+    "generate": "Genera Documento",
+    "prompt": "Descrivi il documento che vuoi generare...",
+    "downloadPdf": "Scarica PDF",
+    "downloadWord": "Scarica Word",
+    "preview": "Anteprima",
+    "uploadFile": "Carica File",
+    "analyzeDocument": "Analizza Documento",
+    "supportedFormats": "Formati supportati: PDF, DOCX, TXT"
+  },
+  "code": {
+    "title": "Generatore Codice",
+    "generate": "Genera Codice",
+    "prompt": "Descrivi il progetto che vuoi creare...",
+    "preview": "Anteprima",
+    "download": "Scarica",
+    "deploy": "Deploy",
+    "downloadZip": "Scarica ZIP",
+    "deployToVercel": "Deploy su Vercel",
+    "projectName": "Nome Progetto",
+    "projectType": "Tipo Progetto",
+    "files": "File",
+    "templates": "Template",
+    "saveTemplate": "Salva come Template",
+    "loadTemplate": "Carica Template",
+    "inlineEdit": "Modifica Inline",
+    "autoComplete": "Completamento Automatico",
+    "generateDatabase": "Genera Database",
+    "generateApi": "Genera API CRUD"
+  },
+  "calendar": {
+    "title": "Calendario Intelligente",
+    "addEvent": "Aggiungi Evento",
+    "editEvent": "Modifica Evento",
+    "deleteEvent": "Elimina Evento",
+    "eventTitle": "Titolo Evento",
+    "eventDescription": "Descrizione",
+    "eventDate": "Data",
+    "eventTime": "Ora",
+    "eventLocation": "Luogo",
+    "allDay": "Tutto il giorno",
+    "reminder": "Promemoria",
+    "noEvents": "Nessun evento per oggi",
+    "upcomingEvents": "Eventi in arrivo"
+  },
+  "assistant": {
+    "title": "Nuvia - Assistente Personale",
+    "placeholder": "Chiedi qualsiasi cosa a Nuvia...",
+    "greeting": "Ciao! Sono Nuvia, il tuo assistente personale. Come posso aiutarti oggi?",
+    "searching": "Sto cercando informazioni...",
+    "webSearch": "Ricerca web in corso...",
+    "uploadFile": "Carica un file per l'analisi"
+  },
+  "settings": {
+    "title": "Impostazioni",
+    "profile": "Profilo",
+    "preferences": "Preferenze",
+    "language": "Lingua",
+    "aiStyle": "Stile AI",
+    "name": "Nome",
+    "surname": "Cognome",
+    "saveChanges": "Salva Modifiche",
+    "changesSaved": "Modifiche salvate con successo",
+    "userManagement": "Gestione Utenti",
+    "addUser": "Aggiungi Utente",
+    "users": "Utenti",
+    "role": "Ruolo",
+    "admin": "Admin",
+    "user": "Utente"
+  },
+  "projects": {
+    "title": "I Tuoi Progetti",
+    "create": "Crea Progetto",
+    "view": "Visualizza",
+    "edit": "Modifica",
+    "delete": "Elimina",
+    "noProjects": "Nessun progetto creato ancora",
+    "createdAt": "Creato il",
+    "lastModified": "Ultima modifica"
+  },
+  "templates": {
+    "title": "Template Personali",
+    "save": "Salva Template",
+    "load": "Carica Template",
+    "delete": "Elimina Template",
+    "name": "Nome Template",
+    "description": "Descrizione",
+    "noTemplates": "Nessun template salvato ancora",
+    "templateSaved": "Template salvato con successo",
+    "templateLoaded": "Template caricato con successo"
+  },
+  "database": {
+    "generateSchema": "Genera Schema Database",
+    "description": "Descrizione del progetto...",
+    "sqlSchema": "Schema SQL",
+    "typescriptModel": "Modello TypeScript",
+    "generate": "Genera Schema"
+  },
+  "api": {
+    "generateCrud": "Genera API CRUD",
+    "entityName": "Nome Entità",
+    "controller": "Controller",
+    "routes": "Routes",
+    "model": "Modello",
+    "generate": "Genera API"
+  },
+  "languages": {
+    "it": "🇮🇹 Italiano",
+    "en": "🇬🇧 English"
+  },
+  "errors": {
+    "generic": "Si è verificato un errore",
+    "network": "Errore di connessione",
+    "unauthorized": "Non autorizzato",
+    "notFound": "Non trovato",
+    "validation": "Errore di validazione",
+    "fileUpload": "Errore nel caricamento del file",
+    "fileTooLarge": "File troppo grande",
+    "invalidFormat": "Formato non valido"
+  },
+  "success": {
+    "saved": "Salvato con successo",
+    "deleted": "Eliminato con successo",
+    "updated": "Aggiornato con successo",
+    "created": "Creato con successo",
+    "deployed": "Deploy completato con successo",
+    "downloaded": "Download completato"
+  }
+}

@@ -1,107 +1,131 @@
-/**
- * Servizio per la gestione dei progetti utente
- * Fornisce funzioni per caricare e salvare i progetti
- */
+import prisma from '../prisma';
 
-// Tipo per i progetti
-export interface Project {
-  id: number;
-  ownerId: number;
+export interface CreateProjectData {
   name: string;
-  files: Record<string, string>;
-  createdAt: string;
+  type: 'chat' | 'document' | 'code';
+  userId?: string;
 }
 
-/**
- * Carica i progetti dell'utente (o tutti i progetti se l'utente è admin)
- * @returns Array dei progetti
- */
-export async function loadProjects(): Promise<Project[]> {
-  try {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      throw new Error('Token non trovato');
-    }
-
-    const response = await fetch('/api/projects', {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
-
-    if (!response.ok) {
-      throw new Error('Errore nel caricamento dei progetti');
-    }
-
-    const data = await response.json();
-    return data.data?.projects || [];
-  } catch (error) {
-    console.error('Errore durante il caricamento dei progetti:', error);
-    return [];
-  }
+export interface CreateChatMessageData {
+  projectId: string;
+  role: 'user' | 'ai';
+  content: string;
 }
 
-/**
- * Salva un nuovo progetto associato all'utente corrente
- * @param name Nome del progetto
- * @param files Oggetto contenente i file del progetto (nome file: contenuto)
- * @returns Risposta dal server
- */
-export async function saveProject(name: string, files: Record<string, string>): Promise<any> {
-  try {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      throw new Error('Token non trovato');
-    }
+export interface CreateDocumentData {
+  projectId: string;
+  content: string;
+  format: 'pdf' | 'word';
+}
 
-    const response = await fetch('/api/projects', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+export interface CreateCodeSnippetData {
+  projectId: string;
+  filename: string;
+  code: string;
+  language: string;
+}
+
+export class ProjectService {
+  // Project operations
+  async createProject(data: CreateProjectData) {
+    return await prisma.project.create({
+      data,
+      include: {
+        chats: true,
+        documents: true,
+        codes: true,
       },
-      body: JSON.stringify({ name, files })
     });
+  }
 
-    const data = await response.json();
-    
-    if (!response.ok) {
-      throw new Error(data.message || 'Errore durante il salvataggio del progetto');
-    }
+  async getProject(id: string) {
+    return await prisma.project.findUnique({
+      where: { id },
+      include: {
+        chats: {
+          orderBy: { createdAt: 'asc' },
+        },
+        documents: {
+          orderBy: { createdAt: 'desc' },
+        },
+        codes: {
+          orderBy: { createdAt: 'desc' },
+        },
+      },
+    });
+  }
 
-    return data;
-  } catch (error) {
-    console.error('Errore durante il salvataggio del progetto:', error);
-    throw error;
+  async getProjectsByType(type: 'chat' | 'document' | 'code', userId?: string) {
+    return await prisma.project.findMany({
+      where: {
+        type,
+        ...(userId && { userId }),
+      },
+      include: {
+        chats: {
+          take: 1,
+          orderBy: { createdAt: 'desc' },
+        },
+        documents: {
+          take: 1,
+          orderBy: { createdAt: 'desc' },
+        },
+        codes: {
+          take: 1,
+          orderBy: { createdAt: 'desc' },
+        },
+      },
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
+  async deleteProject(id: string) {
+    return await prisma.project.delete({
+      where: { id },
+    });
+  }
+
+  // Chat operations
+  async addChatMessage(data: CreateChatMessageData) {
+    return await prisma.chatMessage.create({
+      data,
+    });
+  }
+
+  async getChatMessages(projectId: string) {
+    return await prisma.chatMessage.findMany({
+      where: { projectId },
+      orderBy: { createdAt: 'asc' },
+    });
+  }
+
+  // Document operations
+  async addDocument(data: CreateDocumentData) {
+    return await prisma.document.create({
+      data,
+    });
+  }
+
+  async getDocuments(projectId: string) {
+    return await prisma.document.findMany({
+      where: { projectId },
+      orderBy: { createdAt: 'desc' },
+    });
+  }
+
+  // Code operations
+  async addCodeSnippet(data: CreateCodeSnippetData) {
+    return await prisma.codeSnippet.create({
+      data,
+    });
+  }
+
+  async getCodeSnippets(projectId: string) {
+    return await prisma.codeSnippet.findMany({
+      where: { projectId },
+      orderBy: { createdAt: 'desc' },
+    });
   }
 }
 
-/**
- * Carica un singolo progetto
- * @param id ID del progetto da caricare
- * @returns Il progetto specificato
- */
-export async function loadProject(id: number): Promise<Project> {
-  try {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      throw new Error('Token non trovato');
-    }
-
-    const response = await fetch(`/api/projects/${id}`, {
-      headers: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
-
-    if (!response.ok) {
-      throw new Error('Errore nel caricamento del progetto');
-    }
-
-    const data = await response.json();
-    return data.data?.project;
-  } catch (error) {
-    console.error(`Errore durante il caricamento del progetto ${id}:`, error);
-    throw error;
-  }
-}
+export const projectService = new ProjectService();

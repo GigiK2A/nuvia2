@@ -1,0 +1,102 @@
+// Nuovi stati da aggiungere subito dopo gli stati esistenti
+const [projectPrompt, setProjectPrompt] = useState('');
+const [projectType, setProjectType] = useState('landing-page');
+
+// Nuova funzione da aggiungere prima di handleSubmit
+async function handleProjectGeneration() {
+  try {
+    setGeneratingProject(true);
+    
+    const res = await fetch('/api/code/project', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt: projectPrompt, type: projectType }),
+    });
+
+    const data = await res.json();
+
+    if (data.files) {
+      // Converti i file ricevuti nel formato richiesto dal nostro store
+      const projectFiles = Object.entries(data.files).map(([name, content]) => ({
+        name,
+        content: content as string,
+        language: name.endsWith('.html') ? 'html' : 
+                  name.endsWith('.css') ? 'css' : 
+                  name.endsWith('.js') ? 'javascript' :
+                  name.endsWith('.jsx') ? 'javascript' :
+                  name.endsWith('.ts') ? 'typescript' :
+                  name.endsWith('.tsx') ? 'typescript' :
+                  name.endsWith('.json') ? 'json' :
+                  name.endsWith('.md') ? 'markdown' : 'text'
+      }));
+      
+      // Imposta i file nello store
+      setFiles(projectFiles);
+      
+      // Attiva la modalità progetto
+      setIsProjectMode(true);
+      
+      // Seleziona il primo file
+      if (projectFiles.length > 0) {
+        setActiveTab(projectFiles[0].name);
+      }
+      
+      toast({
+        title: "Progetto generato",
+        description: `Progetto "${data.name}" generato con successo con ${projectFiles.length} file.`,
+      });
+      
+      // Pulisci il campo dopo la generazione
+      setProjectPrompt('');
+    }
+  } catch (err) {
+    console.error('Errore generazione progetto:', err);
+    toast({
+      title: "Errore",
+      description: "Impossibile generare il progetto. Riprova più tardi.",
+      variant: "destructive",
+    });
+  } finally {
+    setGeneratingProject(false);
+  }
+}
+
+// Form da aggiungere nella parte della UI, magari dopo il bottone "Libreria codice"
+<div className="mb-4 border p-4 rounded shadow-sm bg-white">
+  <h2 className="text-lg font-semibold mb-2">🧠 Genera un progetto completo</h2>
+  
+  <label className="block text-sm mb-1">Tipo di progetto:</label>
+  <select
+    className="w-full border rounded px-2 py-1 mb-3"
+    value={projectType}
+    onChange={(e) => setProjectType(e.target.value)}
+  >
+    <option value="landing-page">Landing Page</option>
+    <option value="react-app">React App</option>
+    <option value="node-agent">Agente Node.js</option>
+  </select>
+
+  <label className="block text-sm mb-1">Descrizione:</label>
+  <input
+    type="text"
+    className="w-full border rounded px-2 py-1 mb-3"
+    placeholder="Es: Crea un sito portfolio moderno"
+    value={projectPrompt}
+    onChange={(e) => setProjectPrompt(e.target.value)}
+  />
+
+  <button
+    onClick={handleProjectGeneration}
+    className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+    disabled={generatingProject}
+  >
+    {generatingProject ? (
+      <span className="flex items-center">
+        <Loader2 className="animate-spin h-4 w-4 mr-2" />
+        Generazione...
+      </span>
+    ) : (
+      '🚀 Genera progetto'
+    )}
+  </button>
+</div>
