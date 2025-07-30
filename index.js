@@ -72,6 +72,3 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
   res.send('✅ Server attivo: connessione riuscita!');
 });
-app.get('/', (req, res) => {
-  res.send('✅ Il server Nuvia è attivo!');
-});
