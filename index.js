@@ -69,3 +69,6 @@ app.post('/api/document', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server backend Nuvia in ascolto sulla porta ${port}`);
 });
+app.get('/', (req, res) => {
+  res.send('✅ Il server Nuvia è attivo!');
+});
